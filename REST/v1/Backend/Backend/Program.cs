@@ -20,6 +20,6 @@ namespace Backend
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:8030");
+                .UseUrls("http://0.0.0.0:8030");
     }
 }

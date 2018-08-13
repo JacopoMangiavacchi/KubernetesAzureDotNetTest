@@ -1,6 +1,8 @@
 FROM microsoft/dotnet:sdk AS build-env
 WORKDIR /app
 
+EXPOSE 8030
+
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./
 RUN dotnet restore
@@ -13,4 +15,4 @@ RUN dotnet publish -c Release -o out
 FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+ENTRYPOINT ["dotnet", "Backend.dll"]
