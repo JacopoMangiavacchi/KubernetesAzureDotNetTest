@@ -1,11 +1,11 @@
-Configure Kubernetes Cluster
+Configure Azure Kubernetes Cluster
 ====================
 
 az aks login
 az aks get-credentials --resource-group JContainer --name jKubeCluster
 
 
-kubectl create secret docker-registry jazurecontainersecret --docker-server  jcontainerregistry.azurecr.io --docker-email <YOUR_MAIL> --docker-username=<SERVICE_PRINCIPAL_ID> --docker-password <YOUR_PASSWORD>
+kubectl create secret docker-registry jazurecontainersecret --docker-server  jcontainerregistry.azurecr.io --docker-username=<SERVICE_PRINCIPAL_ID> --docker-password <YOUR_PASSWORD>
 
 
 az aks browse --resource-group JContainer --name jKubeCluster
