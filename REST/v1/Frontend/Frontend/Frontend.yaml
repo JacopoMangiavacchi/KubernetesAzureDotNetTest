@@ -19,7 +19,7 @@ spec:
         image: jcontainerregistry.azurecr.io/frontend:latest
         env:
         - name: BackendUrlENV
-          value: "http://104.40.7.46:8030/data"
+          value: "http://backend1:8030/data"
         ports:
         - containerPort: 8030
       imagePullSecrets:
