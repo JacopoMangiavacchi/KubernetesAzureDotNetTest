@@ -18,9 +18,9 @@ namespace Backend.Controllers
     [ApiController]
     public class DataController : ControllerBase
     {
-        // GET api/values
+        // GET data
         [HttpGet]
-        public ActionResult<string> Get(int id)
+        public ActionResult<string> Get()
         {
             var data = new Data {platform = ".Net Core", protocol = "REST", version = 1};
 

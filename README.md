@@ -40,3 +40,15 @@ docker push jcontainerregistry.azurecr.io/backend
 
 kubectl create -f Backend.yaml
 
+
+
+Deploy FRONTEND
+===============
+
+docker build -t frontend .
+
+docker tag frontend jcontainerregistry.azurecr.io/frontend
+
+docker push jcontainerregistry.azurecr.io/frontend
+
+kubectl create -f Frontend.yaml
