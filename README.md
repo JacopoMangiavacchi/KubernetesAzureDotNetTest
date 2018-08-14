@@ -1,4 +1,4 @@
-CREATE Kubernetes Cluster
+Configure Kubernetes Cluster
 ====================
 
 az aks login
