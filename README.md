@@ -25,6 +25,7 @@ docker tag backend jcontainerregistry.azurecr.io/backend:v1
 
 docker push jcontainerregistry.azurecr.io/backend
 
+kubectl create -f Backend.yaml
 
 
 
@@ -37,4 +38,5 @@ docker tag backend jcontainerregistry.azurecr.io/backend:v2
 
 docker push jcontainerregistry.azurecr.io/backend
 
+kubectl create -f Backend.yaml
 
