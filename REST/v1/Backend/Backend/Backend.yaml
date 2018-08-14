@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: jcontainerregistry.azurecr.io/backend
+        ports:
+        - containerPort: 8030
+      imagePullSecrets:
+      - name: jazurecontainersecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  ports:
+  - port: 8030
+  selector:
+    app: backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: backend
+
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: jcontainerregistry.azurecr.io/backend
+        ports:
+        - containerPort: 8030
+      imagePullSecrets:
+      - name: jazurecontainersecret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    run: backend
+spec:
+  type: NodePort
+  ports:
+  - port: 8030
+    protocol: TCP
+  selector:
+    run: backend

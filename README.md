@@ -19,3 +19,5 @@ kubectl create secret docker-registry jazurecontainersecret --docker-server  jco
 az aks browse --resource-group JContainer --name jKubeCluster
 
 
+kubectl expose deployment backend --type=LoadBalancer --name=backendlb
+
