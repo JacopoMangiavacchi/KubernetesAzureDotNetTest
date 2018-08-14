@@ -1,13 +1,5 @@
-docker build -t backend .
-
-docker run -d --name testbackend --publish=8090:8030 backend
-
-docker login jcontainerregistry.azurecr.io
-
-docker tag backend jcontainerregistry.azurecr.io/backend
-
-docker push jcontainerregistry.azurecr.io/backend
-
+CREATE Kubernetes Cluster
+====================
 
 az aks login
 az aks get-credentials --resource-group JContainer --name jKubeCluster
@@ -19,5 +11,30 @@ kubectl create secret docker-registry jazurecontainersecret --docker-server  jco
 az aks browse --resource-group JContainer --name jKubeCluster
 
 
-kubectl expose deployment backend --type=LoadBalancer --name=backendlb
+
+Deploy BACKEND v1
+===============
+
+docker build -t backend .
+
+docker run -d --name testbackend --publish=8090:8030 backend
+
+docker login jcontainerregistry.azurecr.io
+
+docker tag backend jcontainerregistry.azurecr.io/backend:v1
+
+docker push jcontainerregistry.azurecr.io/backend
+
+
+
+
+Deploy BACKEND v2
+===============
+
+docker build -t backend .
+
+docker tag backend jcontainerregistry.azurecr.io/backend:v2
+
+docker push jcontainerregistry.azurecr.io/backend
+
 
